@@ -1,4 +1,4 @@
-package DrawingPanel;
+package VDrawingPanel;
 
 public class GResizeTool {
 

@@ -1,4 +1,4 @@
-package menuBar;
+package VMenuBar;
 
 import javax.swing.JMenuBar;
 

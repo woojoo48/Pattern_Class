@@ -1,4 +1,4 @@
-package toolBar;
+package VToolBar;
 
 
 import java.awt.event.ActionEvent;
@@ -11,33 +11,33 @@ import Interface.ToolBarListener;
 public class GToolBar extends JToolBar{
 	private static final long serialVersionUID = 1L;
 
-	private GDiagramButton diagramButton;
 	private GShapeButton shapeButton;
+	private GActionButton actionButton;
 	
-	private String selectedDiagram;
 	private String selectedShape;
+	private String selectedAction;
 	private ToolBarListener toolBarListener;
 	
 	public GToolBar() {
-		this.diagramButton = new GDiagramButton();
-		this.add(this.diagramButton);
-		
 		this.shapeButton = new GShapeButton();
 		this.add(this.shapeButton);
 		
-		selectedDiagram = "rectangle";
-		selectedShape = "Draw";   
+		this.actionButton = new GActionButton();
+		this.add(this.actionButton);
+		
+		selectedShape = "rectangle";
+		selectedAction = "Draw";   
 	}
 	
 	public void initialize() {
-		this.diagramButton.initialize();
 		this.shapeButton.initialize();
+		this.actionButton.initialize();
 		
 		this.setDiagramListeners();
 		this.setShapeListeners();
 		
-		this.diagramButton.setSelectedButton("rectangle");
-        this.shapeButton.setSelectedButton("Draw");
+		this.shapeButton.setSelectedButton("rectangle");
+        this.actionButton.setSelectedButton("Draw");
 	}
 	
 	public void setToolBarListener(ToolBarListener toolBarListener) {
@@ -45,16 +45,6 @@ public class GToolBar extends JToolBar{
 	}
 	
 	private void setDiagramListeners() {
-        diagramButton.setButtonListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            	selectedDiagram = e.getActionCommand();
-                noticeStatusChange();
-            }
-        });
-    }
-    
-    private void setShapeListeners() {
         shapeButton.setButtonListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -64,17 +54,27 @@ public class GToolBar extends JToolBar{
         });
     }
     
+    private void setShapeListeners() {
+        actionButton.setButtonListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	selectedAction = e.getActionCommand();
+                noticeStatusChange();
+            }
+        });
+    }
+    
     private void noticeStatusChange() {
         if (toolBarListener != null) {
-        	toolBarListener.onStateChange(selectedDiagram, selectedShape);
+        	toolBarListener.onStateChange(selectedShape, selectedAction);
         }
     }
     
     public String getSelectedShape() {
-        return selectedDiagram;
+        return selectedShape;
     }
     
     public String getSelectedAction() {
-        return selectedShape;
+        return selectedAction;
     }
 }

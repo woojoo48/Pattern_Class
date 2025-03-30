@@ -1,4 +1,4 @@
-package toolBar;
+package VToolBar;
 
 import java.awt.event.ActionListener;
 
@@ -6,7 +6,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-public class GDiagramButton extends JPanel{
+public class GShapeButton extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
 	private JRadioButton rectangleButton;
@@ -14,9 +14,9 @@ public class GDiagramButton extends JPanel{
 	private JRadioButton ovalButton;
 	private JRadioButton polygonButton;
 	private JRadioButton textboxButton;
-	private ButtonGroup diagramGroup;
+	private ButtonGroup shapeGroup;
 	
-	public GDiagramButton() {
+	public GShapeButton() {
 		//components
 		this.rectangleButton = new JRadioButton("rectangle");
 		this.add(this.rectangleButton);
@@ -34,12 +34,12 @@ public class GDiagramButton extends JPanel{
 		this.add(this.textboxButton);
 		
 		//그룹화 - 한번에 하나만 선택
-		this.diagramGroup = new ButtonGroup();
-		this.diagramGroup.add(rectangleButton);
-		this.diagramGroup.add(triangleButton);
-		this.diagramGroup.add(ovalButton);
-		this.diagramGroup.add(polygonButton);
-		this.diagramGroup.add(textboxButton);
+		this.shapeGroup = new ButtonGroup();
+		this.shapeGroup.add(rectangleButton);
+		this.shapeGroup.add(triangleButton);
+		this.shapeGroup.add(ovalButton);
+		this.shapeGroup.add(polygonButton);
+		this.shapeGroup.add(textboxButton);
 	}
 
 	public void initialize() {

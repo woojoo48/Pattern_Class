@@ -1,4 +1,4 @@
-package toolBar;
+package VToolBar;
 
 import java.awt.event.ActionListener;
 
@@ -6,17 +6,17 @@ import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 
-public class GShapeButton extends JPanel {
+public class GActionButton extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	private JToggleButton drawButton;
 	private JToggleButton moveButton;
 	private JToggleButton resizeButton;
 	private JToggleButton rotateButton;
-	private ButtonGroup ShapeGroup;
+	private ButtonGroup actionGroup;
 	
-	public GShapeButton() {
-		this.drawButton = new JToggleButton("Drow");
+	public GActionButton() {
+		this.drawButton = new JToggleButton("Draw");
 		this.add(drawButton);
 		
 		this.moveButton = new JToggleButton("Move");
@@ -28,11 +28,11 @@ public class GShapeButton extends JPanel {
 		this.rotateButton = new JToggleButton("Rotate");
 		this.add(rotateButton);
 		
-		this.ShapeGroup = new ButtonGroup();
-		this.ShapeGroup.add(this.drawButton);
-		this.ShapeGroup.add(this.moveButton);
-		this.ShapeGroup.add(this.resizeButton);
-		this.ShapeGroup.add(this.rotateButton);
+		this.actionGroup = new ButtonGroup();
+		this.actionGroup.add(this.drawButton);
+		this.actionGroup.add(this.moveButton);
+		this.actionGroup.add(this.resizeButton);
+		this.actionGroup.add(this.rotateButton);
 	}
 	
 	public void initialize() {
