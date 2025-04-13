@@ -1,23 +1,22 @@
-package Model;
+package Shape;
 
 import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Polygon;
 
-public class MTriangle extends MShapeType {
+public class STriangle extends STypeManager {
     private static final long serialVersionUID = 1L;
     
-    private Point[] relativePoints;
-    
-    public MTriangle() {
+    public STriangle() {
         super();
     }
     
-    public MTriangle(int x, int y, int width, int height) {
+    public STriangle(int x, int y, int width, int height) {
         super(x, y, width, height, Color.BLACK, false, 1);
     }
     
-    public MTriangle(int x, int y, int width, int height, 
+    public STriangle(int x, int y, int width, int height, 
                     Color color, boolean filled, int lineWidth) {
         super(x, y, width, height, color, filled, lineWidth);
     }
@@ -30,7 +29,7 @@ public class MTriangle extends MShapeType {
         return absolutePoints;
     }
     
-    // move
+    @Override
     public boolean contains(int px, int py) {
         Point[] points = getAbsolutePoints();
         Polygon polygon = new Polygon();
@@ -42,4 +41,28 @@ public class MTriangle extends MShapeType {
         return polygon.contains(px, py);
     }
     
+    @Override
+    public void draw(Graphics2D g2d) {
+        Color originalColor = g2d.getColor();
+
+        g2d.setColor(getColor());
+        
+        Point[] points = getAbsolutePoints();
+        
+        int[] xPoints = new int[3];
+        int[] yPoints = new int[3];
+        
+        for (int i = 0; i < 3; i++) {
+            xPoints[i] = points[i].x;
+            yPoints[i] = points[i].y;
+        }
+        
+        if (isFilled()) {
+            g2d.fillPolygon(xPoints, yPoints, 3);
+        } else {
+            g2d.drawPolygon(xPoints, yPoints, 3);
+        }
+        
+        g2d.setColor(originalColor);
+    }
 }

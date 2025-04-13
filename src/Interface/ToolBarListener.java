@@ -1,5 +1,5 @@
 package Interface;
 
 public interface ToolBarListener {
-	void onStateChange(String selectedDiagram, String selectedShape);
+    void onStateChange(String selectedShape, String selectedAction);
 }

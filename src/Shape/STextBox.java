@@ -1,33 +1,34 @@
-package Model;
+package Shape;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics2D;
 
-public class MTextBox extends MShapeType {
+public class STextBox extends STypeManager {
     private static final long serialVersionUID = 1L;
     
     private String text;
     private Font font;
     
-    public MTextBox() {
+    public STextBox() {
         super();
         this.text = "";
         this.font = new Font("SansSerif", Font.PLAIN, 12);
     }
     
-    public MTextBox(int x, int y, int width, int height) {
+    public STextBox(int x, int y, int width, int height) {
         super(x, y, width, height, Color.BLACK, false, 1);
         this.text = "";
         this.font = new Font("SansSerif", Font.PLAIN, 12);
     }
     
-    public MTextBox(int x, int y, int width, int height, String text) {
+    public STextBox(int x, int y, int width, int height, String text) {
         super(x, y, width, height, Color.BLACK, false, 1);
         this.text = text;
         this.font = new Font("SansSerif", Font.PLAIN, 12);
     }
     
-    public MTextBox(int x, int y, int width, int height, 
+    public STextBox(int x, int y, int width, int height, 
                    Color color, boolean filled, int lineWidth, 
                    String text, Font font) {
         super(x, y, width, height, color, filled, lineWidth);
@@ -60,4 +61,10 @@ public class MTextBox extends MShapeType {
         return px >= getX() && px <= getX() + getWidth() &&
                py >= getY() && py <= getY() + getHeight();
     }
+
+	@Override
+	public void draw(Graphics2D g2d) {
+		// TODO Auto-generated method stub
+		
+	}
 }
